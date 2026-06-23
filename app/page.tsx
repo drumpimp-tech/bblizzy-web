@@ -46,7 +46,7 @@ function TapToEnter({ onTap }: { onTap: () => void }) {
       style={{ background: "#050208" }}
       onClick={onTap}
     >
-      <div className="absolute top-3 left-0 right-0 flex justify-around px-8">
+      <div className="absolute top-3 left-0 right-0 flex justify-center gap-12">
         {[0,1,2,3].map(i => (
           <div key={i} className="led w-2 h-2 rounded-full bg-white" style={{ boxShadow:"0 0 10px #9333ea" }}/>
         ))}
@@ -101,26 +101,26 @@ function Splash({ onDone }: { onDone: () => void }) {
         pointerEvents: phase === "out" ? "none" : "auto",
       }}
     >
-      <div className="absolute top-3 left-0 right-0 flex justify-around px-8">
+      <div className="absolute top-3 left-0 right-0 flex justify-center gap-12">
         {[0,1,2,3].map(i => (
           <div key={i} className="led w-2 h-2 rounded-full bg-white" style={{ boxShadow:"0 0 10px #9333ea" }}/>
         ))}
       </div>
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="beam1 absolute" style={{
-          top:0, left:"calc(50% - 80px)", width:0, height:0,
+          top:0, left:"50%", width:0, height:0,
           borderLeft:"110px solid transparent", borderRight:"110px solid transparent",
-          borderTop:"100vh solid rgba(147,51,234,0.12)", transformOrigin:"50% 0",
+          borderTop:"100vh solid rgba(147,51,234,0.12)", transformOrigin:"0 0",
         }}/>
         <div className="beam2 absolute" style={{
-          top:0, left:"calc(50% + 80px)", width:0, height:0,
+          top:0, left:"50%", width:0, height:0,
           borderLeft:"110px solid transparent", borderRight:"110px solid transparent",
-          borderTop:"100vh solid rgba(147,51,234,0.10)", transformOrigin:"50% 0",
+          borderTop:"100vh solid rgba(147,51,234,0.10)", transformOrigin:"0 0",
         }}/>
         <div className="beam3 absolute" style={{
           top:0, left:"50%", width:0, height:0,
           borderLeft:"90px solid transparent", borderRight:"90px solid transparent",
-          borderTop:"100vh solid rgba(112,26,200,0.08)", transformOrigin:"50% 0",
+          borderTop:"100vh solid rgba(112,26,200,0.08)", transformOrigin:"0 0",
         }}/>
       </div>
       <div className="absolute bottom-0 left-0 right-0 h-56 pointer-events-none" style={{
@@ -326,7 +326,7 @@ export default function Page() {
   if (!splashDone) return <Splash onDone={() => setSplashDone(true)} />;
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center" style={{
+    <div className="h-dvh w-full flex flex-col overflow-hidden" style={{
       background:`linear-gradient(135deg, ${T.bg} 0%, ${T.bgTop} 100%)`,
       color:"#fff", fontFamily:"Impact, 'Arial Narrow', Arial, sans-serif",
     }}>
@@ -349,8 +349,9 @@ export default function Page() {
         }}>BBLIZZY</span>
       </div>
 
-      {/* Content — centered column, max 512px */}
-      <div className="w-full max-w-lg px-4 pb-16 pt-4 flex flex-col gap-5">
+      {/* Content — centered column, max 512px, scrollable */}
+      <div className="flex-1 overflow-y-auto w-full flex flex-col items-center">
+      <div className="w-full max-w-lg px-4 pb-8 pt-4 flex flex-col gap-5">
 
         {/* Photo Stage */}
         <div className="flex flex-col gap-3">
@@ -549,6 +550,7 @@ export default function Page() {
             </div>
           </div>
         )}
+      </div>
       </div>
     </div>
   );
