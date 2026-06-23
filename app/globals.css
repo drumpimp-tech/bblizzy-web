@@ -56,5 +56,5 @@ body {
 }
 .pulse-analyze { animation: pulseGlow 1.1s ease-in-out infinite; }
 
-@keyframes iconGlow { 0%,100%{filter:drop-shadow(0 0 8px #9333ea)} 50%{filter:drop-shadow(0 0 28px #9333ea)} }
+@keyframes iconGlow { 0%,100%{box-shadow:0 0 12px #9333ea,0 0 28px #9333ea55} 50%{box-shadow:0 0 32px #9333ea,0 0 60px #9333ea88} }
 .icon-glow { animation: iconGlow 2s ease-in-out infinite; }
